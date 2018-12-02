@@ -1,5 +1,5 @@
-use std::io::{stdin, BufRead};
 use std::collections::HashSet;
+use std::io::{stdin, BufRead};
 
 fn main() {
     let input: Vec<i32> = stdin()
@@ -13,13 +13,14 @@ fn main() {
 
     let mut frequencies = HashSet::new();
     let freq = input
-    .iter()
-    .cycle()
-    .scan(0, |freq, &input| {
-        *freq += input;
-        Some(*freq)
-    }).find(|freq| !frequencies.insert(*freq))
-    .unwrap();
+        .iter()
+        .cycle()
+        .scan(0, |freq, &input| {
+            *freq += input;
+            Some(*freq)
+        })
+        .find(|freq| !frequencies.insert(*freq))
+        .unwrap();
 
     println!("Part 2 Result: {}", freq)
 }
